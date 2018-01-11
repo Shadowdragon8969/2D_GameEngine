@@ -1,0 +1,36 @@
+using System;
+using System.Threading.Tasks;
+
+namespace GameUtil
+{
+    public class UUID
+    {
+
+        String builder = "";
+        int min;
+        int max;
+        Random r = new Random();
+
+        public UUID(int uuidMin, int uuidMax)
+        {
+            min = uuidMin;
+            max = uuidMax;
+        }
+
+        public async void build()
+        {
+            int id1 = r.Next(min, max);
+            await Task.Delay(1);
+            int id2 = r.Next(min, max);
+            await Task.Delay(1);
+            int id3 = r.Next(min, max);
+            builder = id1 + "a" + id2 + "b" + id3;
+        }
+
+        public String compress()
+        {
+            return builder;
+        }
+
+    }
+}
